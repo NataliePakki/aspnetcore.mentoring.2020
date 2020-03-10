@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AspNetCoreMentoring.ViewModels.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+
+@foreach (var item in Model)
+{
+    <div>
+        @Html.DisplayFor(modelItem => item.Name)
+    </div>
+}
