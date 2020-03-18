@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AspNetCoreMentoring.Models;
+using Serilog;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace AspNetCoreMentoring.Controllers
 {
@@ -31,7 +33,10 @@ namespace AspNetCoreMentoring.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var error = this.HttpContext.Features.Get<IExceptionHandlerFeature>().Error;
+            var requestID = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            Log.Error(error, $"Error occurs, RequestID: {requestID}");
+            return View(new ErrorViewModel { RequestId = requestID });
         }
     }
 }

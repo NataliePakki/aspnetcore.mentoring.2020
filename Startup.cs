@@ -1,3 +1,4 @@
+using System.IO;
 using AspNetCoreMentoring.Data;
 using AspNetCoreMentoring.Services;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace AspNetCoreMentoring
 {
@@ -13,7 +15,7 @@ namespace AspNetCoreMentoring
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;          
         }
 
         public IConfiguration Configuration { get; }
@@ -32,7 +34,11 @@ namespace AspNetCoreMentoring
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            Log.Information($"Connection string: {Configuration.GetConnectionString("Database")}");
+            Log.Information($"Max count products: {Configuration["MaxCountProducts"]}");
+
+
+            if (!env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
