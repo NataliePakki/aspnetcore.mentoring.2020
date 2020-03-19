@@ -38,7 +38,7 @@ namespace AspNetCoreMentoring
             Log.Information($"Max count products: {Configuration["MaxCountProducts"]}");
 
 
-            if (!env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
