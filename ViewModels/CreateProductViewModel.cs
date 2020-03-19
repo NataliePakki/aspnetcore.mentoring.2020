@@ -18,7 +18,7 @@ namespace AspNetCoreMentoring.ViewModels
         [DisplayName("Price")]
         public double UnitPrice { get; set; }
 
-        [MinLength(1, ErrorMessage = "At least one is required")]
+        [Range(1, int.MaxValue, ErrorMessage = "At least one is requered")]
         [DisplayName("In Stock")]
         public int UnitsInStock { get; set; }
 
