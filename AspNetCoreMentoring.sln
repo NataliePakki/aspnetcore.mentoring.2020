@@ -1,7 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMentoring", "AspNetCoreMentoring.csproj", "{AAC9B392-9633-4714-8A3C-4C2D6852FBF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Core", "Shop.Core\Shop.Core.csproj", "{12E0E815-FA02-4968-AAD5-381543845E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Web", "..\Shop.Web\Shop.Web.csproj", "{D18AB996-069A-4173-9C0C-0465A39E3CAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AAC9B392-9633-4714-8A3C-4C2D6852FBF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAC9B392-9633-4714-8A3C-4C2D6852FBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAC9B392-9633-4714-8A3C-4C2D6852FBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAC9B392-9633-4714-8A3C-4C2D6852FBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E0E815-FA02-4968-AAD5-381543845E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E0E815-FA02-4968-AAD5-381543845E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E0E815-FA02-4968-AAD5-381543845E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E0E815-FA02-4968-AAD5-381543845E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
