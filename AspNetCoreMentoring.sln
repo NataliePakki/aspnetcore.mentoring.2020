@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Core", "Shop.Core\Shop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Web", "..\Shop.Web\Shop.Web.csproj", "{D18AB996-069A-4173-9C0C-0465A39E3CAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Web.Tests", "Shop.Web.Tests\Shop.Web.Tests.csproj", "{687DC241-5AA4-416C-BC51-0F30D20C9CCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D18AB996-069A-4173-9C0C-0465A39E3CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{687DC241-5AA4-416C-BC51-0F30D20C9CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687DC241-5AA4-416C-BC51-0F30D20C9CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687DC241-5AA4-416C-BC51-0F30D20C9CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687DC241-5AA4-416C-BC51-0F30D20C9CCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
