@@ -1,6 +1,4 @@
-using System;
-
-namespace AspNetCoreMentoring.Models
+namespace Shop.Web.ViewModels
 {
     public class ErrorViewModel
     {

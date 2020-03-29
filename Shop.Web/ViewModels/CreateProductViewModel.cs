@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AspNetCoreMentoring.ViewModels
+namespace Shop.Web.ViewModels
 {
     public class CreateProductViewModel
     {

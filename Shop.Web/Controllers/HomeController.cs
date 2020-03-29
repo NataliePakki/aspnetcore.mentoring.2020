@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AspNetCoreMentoring.Models;
-using Serilog;
 using Microsoft.AspNetCore.Diagnostics;
+using Serilog;
 
-namespace AspNetCoreMentoring.Controllers
+using Shop.Web.ViewModels;
+
+namespace Shop.Web.Controllers
 {
     public class HomeController : Controller
     {

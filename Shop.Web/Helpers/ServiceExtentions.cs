@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AspNetCoreMentoring.Models;
-using AspNetCoreMentoring.ViewModels;
+using Shop.Core.Models;
+using Shop.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AspNetCoreMentoring.Helpers
+namespace Shop.Web.Helpers
 {
     public static class ServiceExtentions
     {

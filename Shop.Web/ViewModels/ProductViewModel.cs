@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AspNetCoreMentoring.ViewModels
+namespace Shop.Web.ViewModels
 {
     public class ProductViewModel
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-namespace AspNetCoreMentoring.ViewModels
+namespace Shop.Web.ViewModels
 {
     public class CategoryViewModel
     {

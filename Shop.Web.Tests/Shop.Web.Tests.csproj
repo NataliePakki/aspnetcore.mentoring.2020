@@ -21,7 +21,7 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shop.Web\Shop.Web.csproj" />
     <ProjectReference Include="..\Shop.Core\Shop.Core.csproj" />
+    <ProjectReference Include="..\Shop.Web\Shop.Web.csproj" />
   </ItemGroup>
 </Project>

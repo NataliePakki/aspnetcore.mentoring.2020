@@ -1,14 +1,15 @@
-﻿
-using System.Linq;
-using AspNetCoreMentoring.Helpers;
-using AspNetCoreMentoring.Models;
-using AspNetCoreMentoring.Services;
-using AspNetCoreMentoring.ViewModels;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
-namespace AspNetCoreMentoring.Controllers
-{ 
+using Shop.Core.Models;
+using Shop.Web.Helpers;
+using Shop.Core.Services;
+using Shop.Web.ViewModels;
+using Shop.Web.Models;
+
+namespace Shop.Web.Controllers
+{
     public class ProductsController : Controller
     {
         private IProductService _productService;
@@ -16,12 +17,12 @@ namespace AspNetCoreMentoring.Controllers
         private readonly ISupplierService _supplierService;
         private readonly int maxCount;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IConfiguration configuration)
+        public ProductsController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IOptions<Settings> optionSettings)
         {
             _productService = productService;
             _categoryService = categoryService;
             _supplierService = supplierService;
-            maxCount = (int)configuration.GetValue(typeof(int), "MaxCountProducts");
+            maxCount = optionSettings.Value.MaxCountProducts;
         }
 
         public IActionResult Index()
@@ -38,15 +39,15 @@ namespace AspNetCoreMentoring.Controllers
         public IActionResult Create()
         {
             var product = new Product();
-            var viewModel = product.ToCreateViewModel(_categoryService.GetAll(),_supplierService.GetAll());
-  
+            var viewModel = product.ToCreateViewModel(_categoryService.GetAll(), _supplierService.GetAll());
+
             return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult Create(CreateProductViewModel viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var newProduct = viewModel.ToProduct();
                 _productService.Create(newProduct);
@@ -56,7 +57,7 @@ namespace AspNetCoreMentoring.Controllers
 
             viewModel.Categories = _categoryService.GetAll().ToSelectList();
             viewModel.Suppliers = _supplierService.GetAll().ToSelectList();
-            return View(viewModel);     
+            return View(viewModel);
         }
 
 

@@ -1,6 +1,3 @@
-using System.IO;
-using AspNetCoreMentoring.Data;
-using AspNetCoreMentoring.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace AspNetCoreMentoring
+using Shop.Core.Data;
+using Shop.Core.Services;
+
+namespace Shop.Web
 {
     public class Startup
     {

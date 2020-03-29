@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace AspNetCoreMentoring
+namespace Shop.Web
 {
     public class Program
     {

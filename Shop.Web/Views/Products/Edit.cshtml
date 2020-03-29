@@ -1,4 +1,4 @@
-﻿@model AspNetCoreMentoring.ViewModels.EditProductViewModel
+﻿@model Shop.Web.ViewModels.EditProductViewModel
 
 @{
     ViewData["Title"] = "Edit " + Model.ProductName;
@@ -34,7 +34,5 @@
     <br /><button type="submit">Edit</button>
 </form>
 @section Scripts{
-
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
