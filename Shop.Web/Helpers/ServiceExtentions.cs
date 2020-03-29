@@ -40,10 +40,37 @@ namespace Shop.Web.Helpers
                 return null;
             return new CategoryViewModel()
             {
+                CategoryId = category.CategoryID,
                 Name = category.CategoryName
             };
         }
 
+        public static EditCategoryViewModel ToEditViewModel(this Category category)
+        {
+            if (category == null)
+                return null;
+            return new EditCategoryViewModel()
+            {
+                CategoryId = category.CategoryID,
+                Name = category.CategoryName,
+                Description = category.Description,
+                FileContent = category.Picture,
+                Result = string.Empty
+            };
+        }
+
+        public static Category ToCategory(this EditCategoryViewModel viewModel)
+        {
+            if (viewModel == null)
+                return null;
+            return new Category()
+            {
+                CategoryID = viewModel.CategoryId,
+                CategoryName = viewModel.Name,
+                Picture = viewModel.FileContent,
+                Description = viewModel.Description
+            };
+        }
 
         public static CreateProductViewModel ToCreateViewModel(this Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
         {

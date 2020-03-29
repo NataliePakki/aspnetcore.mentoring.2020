@@ -1,0 +1,37 @@
+﻿@model Shop.Web.ViewModels.EditCategoryViewModel
+
+@{
+    ViewData["Title"] = "Edit '" + Model.Name + "' category";
+}
+
+<form enctype="multipart/form-data" method="post">
+    <input asp-for="@Model.CategoryId" />
+    <input asp-for="@Model.Description" />
+    <input asp-for="@Model.FileContent" />
+    <dl>
+        <dt>
+            <label asp-for="@Model.Name"></label>
+        </dt>
+        <dd>
+            <input asp-for="@Model.Name" type="text" />
+            <span asp-validation-for="@Model.Name"></span>
+        </dd>
+        <dt>
+            <label asp-for="@Model.FormFile"></label>
+        </dt>
+        <dd>
+            <img src="~/images/@Model.CategoryId" height="42" width="42" />
+            <input asp-for="@Model.FormFile" type="file" accept="image/*" />
+            <span asp-validation-for="@Model.FormFile"></span>
+        </dd>
+    </dl>
+    <button type="submit">Edit</button>
+</form>
+
+<p class="result">
+    @Model.Result
+</p>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

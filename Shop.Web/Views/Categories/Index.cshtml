@@ -3,11 +3,34 @@
 @{
     ViewData["Title"] = "Categories";
 }
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Picture
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
 
-
-@foreach (var item in Model)
-{
-    <div>
-        @Html.DisplayFor(modelItem => item.Name)
-    </div>
-}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <img src="images/@item.CategoryId" height="42" width="42" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
