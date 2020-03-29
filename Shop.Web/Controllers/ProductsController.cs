@@ -7,9 +7,11 @@ using Shop.Web.Helpers;
 using Shop.Core.Services;
 using Shop.Web.ViewModels;
 using Shop.Web.Models;
+using Shop.Web.Filters;
 
 namespace Shop.Web.Controllers
 {
+    [LogAction(true)]
     public class ProductsController : Controller
     {
         private IProductService _productService;
