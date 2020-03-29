@@ -8,6 +8,7 @@ using Serilog;
 
 using Shop.Core.Data;
 using Shop.Core.Services;
+using Shop.Web.Middlewares;
 
 namespace Shop.Web
 {
@@ -52,6 +53,9 @@ namespace Shop.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseMiddleware<ImageCacheMiddleware>(new ImageCacheOptions(env.WebRootPath + "/images", 5));
+
 
             app.UseAuthorization();
 
