@@ -9,6 +9,7 @@ using Serilog;
 using Shop.Core.Data;
 using Shop.Core.Services;
 using Shop.Web.Middlewares;
+using Shop.Web.Models;
 
 namespace Shop.Web
 {
@@ -24,12 +25,14 @@ namespace Shop.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<Settings>(Configuration);
             services.AddDbContext<ApplicationContext>(options
                 => options.UseMySql(this.Configuration.GetConnectionString("Database")));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
