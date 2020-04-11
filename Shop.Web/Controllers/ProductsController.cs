@@ -15,15 +15,11 @@ namespace Shop.Web.Controllers
     public class ProductsController : Controller
     {
         private IProductService _productService;
-        private ICategoryService _categoryService;
-        private readonly ISupplierService _supplierService;
         private readonly int maxCount;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IOptions<Settings> optionSettings)
+        public ProductsController(IProductService productService, IOptions<Settings> optionSettings)
         {
             _productService = productService;
-            _categoryService = categoryService;
-            _supplierService = supplierService;
             maxCount = optionSettings.Value.MaxCountProducts;
         }
 
@@ -41,7 +37,7 @@ namespace Shop.Web.Controllers
         public IActionResult Create()
         {
             var product = new Product();
-            var viewModel = product.ToCreateViewModel(_categoryService.GetAll(), _supplierService.GetAll());
+            var viewModel = product.ToCreateViewModel();
 
             return View(viewModel);
         }
@@ -57,8 +53,6 @@ namespace Shop.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            viewModel.Categories = _categoryService.GetAll().ToSelectList();
-            viewModel.Suppliers = _supplierService.GetAll().ToSelectList();
             return View(viewModel);
         }
 
@@ -72,7 +66,7 @@ namespace Shop.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var viewModel = product.ToEditViewModel(_categoryService.GetAll(), _supplierService.GetAll());
+            var viewModel = product.ToEditViewModel();
 
             return View(viewModel);
         }
@@ -87,9 +81,6 @@ namespace Shop.Web.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-
-            viewModel.Categories = _categoryService.GetAll().ToSelectList();
-            viewModel.Suppliers = _supplierService.GetAll().ToSelectList();
             return View(viewModel);
         }
     }

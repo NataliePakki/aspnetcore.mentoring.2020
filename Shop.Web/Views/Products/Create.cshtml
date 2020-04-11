@@ -1,4 +1,5 @@
 ﻿@model Shop.Web.ViewModels.CreateProductViewModel
+@inject Shop.Web.Helpers.IFormDataHelper FormDataHelper
 
 @{
     ViewData["Title"] = "Add Product";
@@ -11,7 +12,7 @@
     </div>
     <div>
         <label asp-for="CategoryID"></label>
-        <select asp-for="CategoryID" asp-items="Model.Categories"></select>
+        <select asp-for="CategoryID" asp-items="FormDataHelper.GetCategories()"></select>
     </div>
     <div>
         <label asp-for="QuantityPerUnit"></label>
@@ -27,7 +28,7 @@
     </div>
     <div>
         <label asp-for="SupplierID"></label>
-        <select asp-for="SupplierID" asp-items="Model.Suppliers"></select>
+        <select asp-for="SupplierID" asp-items="FormDataHelper.GetSuppliers()"></select>
     </div>
     <br /><button type="submit">Add</button>
 </form>

@@ -8,6 +8,7 @@ using Serilog;
 
 using Shop.Core.Data;
 using Shop.Core.Services;
+using Shop.Web.Helpers;
 using Shop.Web.Middlewares;
 using Shop.Web.Models;
 
@@ -31,6 +32,7 @@ namespace Shop.Web
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<IFormDataHelper, FormDataHelper>();
             services.AddControllersWithViews();
 
         }

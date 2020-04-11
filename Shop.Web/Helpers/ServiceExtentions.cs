@@ -72,7 +72,7 @@ namespace Shop.Web.Helpers
             };
         }
 
-        public static CreateProductViewModel ToCreateViewModel(this Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
+        public static CreateProductViewModel ToCreateViewModel(this Product product)
         {
             if (product == null)
                 return null;
@@ -81,9 +81,7 @@ namespace Shop.Web.Helpers
                 ProductName = product.ProductName,
                 UnitsInStock = product.UnitsInStock,
                 UnitPrice = product.UnitPrice,
-                QuantityPerUnit = product.QuantityPerUnit,
-                Categories = categories.ToSelectList(),
-                Suppliers = suppliers.ToSelectList()
+                QuantityPerUnit = product.QuantityPerUnit
             };
         }
 
@@ -140,7 +138,7 @@ namespace Shop.Web.Helpers
             };
         }
 
-        public static EditProductViewModel ToEditViewModel(this Product product, IEnumerable<Category> categories, IEnumerable<Supplier> suppliers)
+        public static EditProductViewModel ToEditViewModel(this Product product)
         {
             if (product == null)
                 return null;
@@ -150,9 +148,7 @@ namespace Shop.Web.Helpers
                 ProductName = product.ProductName,
                 UnitsInStock = product.UnitsInStock,
                 UnitPrice = product.UnitPrice,
-                QuantityPerUnit = product.QuantityPerUnit,
-                Categories = categories.ToSelectList(),
-                Suppliers = suppliers.ToSelectList()
+                QuantityPerUnit = product.QuantityPerUnit
             };
         }
 

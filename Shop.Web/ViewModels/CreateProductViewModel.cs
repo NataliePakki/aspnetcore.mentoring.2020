@@ -27,12 +27,5 @@ namespace Shop.Web.ViewModels
 
         [DisplayName("Supplier")]
         public int SupplierID { get; set; }
-
-        [DisplayName("Category")]
-        public IList<SelectListItem> Categories { get; set; }
-
-        [DisplayName("Suppliers")]
-        public IList<SelectListItem> Suppliers { get; set; }
-
     }
 }
