@@ -1,0 +1,15 @@
+﻿@model Tuple<string, string>
+
+<a asp-controller="Home" asp-action="Index">Home</a>
+
+@if (Model.Item1 != "Home")
+{
+    @:>
+    <a asp-controller="@Model.Item1" asp-action="Index">@Model.Item1</a>
+}
+@if (Model.Item2.ToString() != "Index")
+{
+    @:>
+    <a asp-controller="@Model.Item1" asp-action="@Model.Item2">@Model.Item2</a>
+}
+<hr>

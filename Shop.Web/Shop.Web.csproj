@@ -19,6 +19,9 @@
     <Folder Include="Middlewares\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Filters\" />
+    <Folder Include="Components\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Breadcrumb\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
@@ -29,5 +32,8 @@
     <ProjectReference Include="..\Shop.Core\Shop.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Components\Breadcrumb.json" />
   </ItemGroup>
 </Project>
