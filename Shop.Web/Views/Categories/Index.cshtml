@@ -20,17 +20,19 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <img src="images/@item.CategoryId" height="42" width="42" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a northwind-id="@item.CategoryId">Link to picture</a>
+                    <!-- do not see NorthwindImageLink method -->
+                    <!-- Html.NorthwindImageLink(item.CategoryId, "Link to picture") -->
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -39,4 +41,5 @@
     <div class="container">
         User can't edit categories.
     </div>
+
 }
