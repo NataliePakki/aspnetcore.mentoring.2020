@@ -17,20 +17,16 @@ namespace Shop.Web.Tests.Controllers
     public class ProductsControllerTests
     {
         private Mock<IProductService> mockProductsService;
-        private Mock<ICategoryService> mockCategoryService;
-        private Mock<ISupplierService> mockSupplierService;
 
         private ProductsController controller;
 
         public ProductsControllerTests()
         {
             mockProductsService = new Mock<IProductService>();
-            mockCategoryService = new Mock<ICategoryService>();
-            mockSupplierService = new Mock<ISupplierService>();
 
             IOptions<Settings> someOptions = Options.Create<Settings>(new Settings() { MaxCountProducts = 0});
 
-            controller = new ProductsController(mockProductsService.Object, mockCategoryService.Object, mockSupplierService.Object, someOptions); ;
+            controller = new ProductsController(mockProductsService.Object, someOptions); ;
         }
 
         [Fact]
