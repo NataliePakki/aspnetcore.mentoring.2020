@@ -23,8 +23,7 @@
             <tr>
                 <td>
                     <a northwind-id="@item.CategoryId">Link to picture</a>
-                    <!-- do not see NorthwindImageLink method -->
-                    <!-- Html.NorthwindImageLink(item.CategoryId, "Link to picture") -->
+                    @Html.NorthwindImageLink(imageId: item.CategoryId, linkText: "Link to picture")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)

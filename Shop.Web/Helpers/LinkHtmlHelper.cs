@@ -9,8 +9,8 @@ namespace Shop.Web.Helpers
 {
     public static class LinkHtmlHelper
     {
-        public static IHtmlContent NorthwindImageLink<TModel, TResult>(this HtmlHelper<TModel> htmlHelper,
-            Expression<Func<TModel, TResult>> expression, string imageId, string linkText)
+        public static IHtmlContent NorthwindImageLink(this IHtmlHelper htmlHelper,
+            int imageId, string linkText)
         {
             TagBuilder a = new TagBuilder("a");
             a.InnerHtml.Append(linkText);
