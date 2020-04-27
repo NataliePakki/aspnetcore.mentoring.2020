@@ -25,6 +25,16 @@ namespace Shop.Core.Services
             return data;
         }
 
+        public void Delete(int id)
+        {
+            var product = Get(id);
+            if (product != null)
+            {
+                _context.Remove(product);
+                _context.SaveChanges();
+            }
+        }
+
         public Product Get(int id, bool includeAll = false)
         {
             return this.GetAll(includeAll).FirstOrDefault(x => x.ProductID == id);

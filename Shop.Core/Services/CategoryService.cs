@@ -21,6 +21,11 @@ namespace Shop.Core.Services
             return data;
         }
 
+        public void Delete(int id)
+        {
+            
+        }
+
         public Category Get(int id, bool includeAll = false)
         {
             return _context

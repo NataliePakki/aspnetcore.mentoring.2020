@@ -7,9 +7,12 @@ namespace Shop.API.Models
     {
         public ShopMappingProfile()
         {
-            CreateMap<Product, ProductModel>();
-            CreateMap<Category, CategoryModel>();
-            CreateMap<Supplier, SupplierModel>();
+            CreateMap<Product, ProductModel>()
+                .ReverseMap();
+            CreateMap<Category, CategoryModel>()
+                .ReverseMap();
+            CreateMap<Supplier, SupplierModel>()
+                .ReverseMap();
         }
     }
 }

@@ -11,5 +11,7 @@ namespace Shop.Core.Services
         T Create(T data);
 
         T Update(T data);
+
+        void Delete(int id);
     }
 }

@@ -22,6 +22,10 @@ namespace Shop.Core.Services
             return data;
         }
 
+        public void Delete(int id)
+        {
+        }
+
         public Supplier Get(int id, bool includeAll = false)
         {
             return _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
