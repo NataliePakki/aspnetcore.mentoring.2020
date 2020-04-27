@@ -20,9 +20,9 @@ namespace Shop.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(bool includeAll = false)
         {
-            var products = _mapper.Map<IEnumerable<ProductModel>>(this._productService.GetAll());
+            var products = _mapper.Map<IEnumerable<ProductModel>>(this._productService.GetAll(includeAll));
             return Ok(products);
         }
 

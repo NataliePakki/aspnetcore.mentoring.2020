@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Web", "Shop.Web\Shop.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.API", "Shop.API\Shop.API.csproj", "{9BB24F6C-858E-4E09-994D-91CDFBFC9724}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAPIClient", "ConsoleAPIClient\ConsoleAPIClient.csproj", "{5BD66B01-2ED8-4BD5-95C1-37EB1F0BC93D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{9BB24F6C-858E-4E09-994D-91CDFBFC9724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BB24F6C-858E-4E09-994D-91CDFBFC9724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BB24F6C-858E-4E09-994D-91CDFBFC9724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD66B01-2ED8-4BD5-95C1-37EB1F0BC93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD66B01-2ED8-4BD5-95C1-37EB1F0BC93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD66B01-2ED8-4BD5-95C1-37EB1F0BC93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD66B01-2ED8-4BD5-95C1-37EB1F0BC93D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
