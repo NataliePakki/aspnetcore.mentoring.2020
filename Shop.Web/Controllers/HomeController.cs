@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
 
+using Shop.Web.Filters;
+
 using Shop.Web.ViewModels;
 
 namespace Shop.Web.Controllers

@@ -11,6 +11,7 @@ using Shop.Web.Controllers;
 using Shop.Web.Helpers;
 using Shop.Web.ViewModels;
 using Shop.Web.Models;
+using AutoMapper;
 
 namespace Shop.Web.Tests.Controllers
 {
@@ -20,23 +21,32 @@ namespace Shop.Web.Tests.Controllers
 
         private ProductsController controller;
 
+        private IMapper mapper;
+
         public ProductsControllerTests()
         {
             mockProductsService = new Mock<IProductService>();
 
             IOptions<Settings> someOptions = Options.Create<Settings>(new Settings() { MaxCountProducts = 0});
 
-            controller = new ProductsController(mockProductsService.Object, someOptions); ;
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new ViewMappingProfile());
+            });
+            mapper = config.CreateMapper();
+
+            controller = new ProductsController(mockProductsService.Object, someOptions, mapper); ;
         }
+
 
         [Fact]
         public void Index_ReturnsAViewResult_WithAListOfProducts()
         {
             // Arrange
             var products = GetProducts();
-            var viewModels = products.ToViewModels();
+            var viewModels = mapper.Map<IEnumerable<ProductViewModel>>(products);
 
-            mockProductsService.Setup(s => s.GetAll()).Returns(products);
+            mockProductsService.Setup(s => s.GetAll(true)).Returns(products);
 
             // Act
             var result = controller.Index();
@@ -92,7 +102,7 @@ namespace Shop.Web.Tests.Controllers
         {
             // Arrange
             var id = 1;
-            mockProductsService.Setup(x => x.Get(id)).Returns<Product>(null);
+            mockProductsService.Setup(x => x.Get(id, true)).Returns<Product>(null);
 
             // Act
             RedirectToActionResult redirectResult =

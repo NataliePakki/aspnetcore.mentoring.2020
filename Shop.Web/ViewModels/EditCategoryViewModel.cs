@@ -8,11 +8,11 @@ namespace Shop.Web.ViewModels
     public class EditCategoryViewModel
     {
         [HiddenInput]
-        public int CategoryId { get; set; }
+        public int CategoryID { get; set; }
 
         [Required]
         [DisplayName("Category Name")]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
 
         [HiddenInput]
         public string Description { get; set; }

@@ -4,9 +4,9 @@ namespace Shop.Core.Services
 {
     public interface IDataService<T>
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(bool includeAll = false);
 
-        T Get(int id);
+        T Get(int id, bool includeAll = false);
 
         T Create(T data);
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using Shop.Core.Data;
 using Shop.Core.Models;
 
@@ -22,12 +21,14 @@ namespace Shop.Core.Services
             return data;
         }
 
-        public Category Get(int id)
+        public Category Get(int id, bool includeAll = false)
         {
-            return _context.Categories.FirstOrDefault(x => x.CategoryID == id);
+            return _context
+                .Categories
+                .FirstOrDefault(x => x.CategoryID == id);
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<Category> GetAll(bool includeAll = false)
         {
             return _context.Categories;
         }

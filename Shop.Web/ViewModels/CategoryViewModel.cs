@@ -4,9 +4,9 @@ namespace Shop.Web.ViewModels
 {
     public class CategoryViewModel
     {
-        public int CategoryId { get; set; }
+        public int CategoryID { get; set; }
 
         [DisplayName("Category Name")]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
     }
 }

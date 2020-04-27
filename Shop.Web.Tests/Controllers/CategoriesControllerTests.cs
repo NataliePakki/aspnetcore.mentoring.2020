@@ -7,23 +7,40 @@ using Xunit;
 using Shop.Core.Models;
 using Shop.Core.Services;
 using Shop.Web.Controllers;
-using Shop.Web.Helpers;
 using Shop.Web.ViewModels;
+using AutoMapper;
+using Shop.Web.Models;
 
 namespace Shop.Web.Tests.Controllers
 {
     public class CategoriesControllerTests
     {
+        private CategoriesController controller;
+
+        private Mock<ICategoryService> mockService;
+
+        private IMapper mapper;
+
+        public CategoriesControllerTests()
+        {
+            mockService = new Mock<ICategoryService>();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new ViewMappingProfile());
+            });
+            mapper = config.CreateMapper();
+
+            controller = new CategoriesController(mockService.Object, mapper);
+        }
+
         [Fact]
         public void Index_ReturnsAViewResult_WithAListOfCategories()
         {
             // Arrange
             var categories = GetCategories();
-            var viewModels = categories.ToViewModels();
-            var mockService = new Mock<ICategoryService>();
-            mockService.Setup(s => s.GetAll()).Returns(categories);
+            var viewModels = mapper.Map<IEnumerable<CategoryViewModel>>(categories);
 
-            var controller = new CategoriesController(mockService.Object);
+            mockService.Setup(s => s.GetAll(false)).Returns(categories);
 
             // Act
             var result = controller.Index();

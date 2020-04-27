@@ -22,12 +22,12 @@ namespace Shop.Core.Services
             return data;
         }
 
-        public Supplier Get(int id)
+        public Supplier Get(int id, bool includeAll = false)
         {
             return _context.Suppliers.FirstOrDefault(x => x.SupplierID == id);
         }
 
-        public IEnumerable<Supplier> GetAll()
+        public IEnumerable<Supplier> GetAll(bool includeAll = false)
         {
             return _context.Suppliers;
         }

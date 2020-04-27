@@ -2,29 +2,34 @@
 using System.Net;
 using System.IO;
 
-using Shop.Web.Helpers;
 using Shop.Core.Services;
 using Shop.Web.ViewModels;
+using AutoMapper;
+using Shop.Core.Models;
+using System.Collections.Generic;
 
 namespace Shop.Web.Controllers
 {
     public class CategoriesController : Controller
     {
         private ICategoryService _categoryService;
+        private IMapper _mapper;
 
-        public CategoriesController(ICategoryService service)
+        public CategoriesController(ICategoryService service, IMapper mapper)
         {
             _categoryService = service;
+            _mapper = mapper;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
             var categories = _categoryService.GetAll();
-            return View(categories.ToViewModels());
+            return View(_mapper.Map<IEnumerable<CategoryViewModel>>(categories));
         }
 
         [HttpGet]
+        [Produces("image/jpeg")]
         [Route("images/{id}")]
         public IActionResult Image(int id)
         {
@@ -47,7 +52,7 @@ namespace Shop.Web.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-            var editViewModel = category.ToEditViewModel();
+            var editViewModel = _mapper.Map<EditCategoryViewModel>(category);
             return View(editViewModel);
         }
 
@@ -89,7 +94,7 @@ namespace Shop.Web.Controllers
                 }
             }
 
-            _categoryService.Update(model.ToCategory());
+            _categoryService.Update(_mapper.Map<Category>(model));
 
             return RedirectToAction(nameof(Index));
         }

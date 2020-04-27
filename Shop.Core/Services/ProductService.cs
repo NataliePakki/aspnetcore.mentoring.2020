@@ -25,16 +25,24 @@ namespace Shop.Core.Services
             return data;
         }
 
-        public Product Get(int id)
+        public Product Get(int id, bool includeAll = false)
         {
-            return _context.Products.FirstOrDefault(x => x.ProductID == id);
+            return this.GetAll(includeAll).FirstOrDefault(x => x.ProductID == id);
         }
 
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Product> GetAll(bool includeAll = false)
         {
-            return _context.Products
+            var products = _context.Products;
+            if (includeAll)
+            {
+                return products
                 .Include(product => product.Category)
                 .Include(product => product.Supplier);
+            }
+            else
+            {
+                return products;
+            }
         }
 
         public Product Update(Product data)

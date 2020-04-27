@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,8 @@ namespace Shop.Web
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<IFormDataHelper, FormDataHelper>();
+
+            services.AddAutoMapper(typeof(ViewMappingProfile));
             services.AddControllersWithViews();
 
         }

@@ -7,7 +7,7 @@ namespace Shop.Web.Components
     [ViewComponent]
     public class Breadcrumb: ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()     
+        public IViewComponentResult Invoke()
         {
             var controllerName = ViewContext.RouteData.Values["controller"].ToString();
             var actionName = ViewContext.RouteData.Values["action"].ToString();

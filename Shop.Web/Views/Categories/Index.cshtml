@@ -10,7 +10,7 @@
                 Picture
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.CategoryName)
             </th>
             <th>
 
@@ -22,14 +22,14 @@
         {
             <tr>
                 <td>
-                    <a northwind-id="@item.CategoryId">Link to picture</a>
-                    @Html.NorthwindImageLink(imageId: item.CategoryId, linkText: "Link to picture")
+                    <a northwind-id="@item.CategoryID">Link to picture</a>
+                    @Html.NorthwindImageLink(imageId: item.CategoryID, linkText: "Link to picture")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@item.CategoryID">Edit</a>
                 </td>
             </tr>
         }
