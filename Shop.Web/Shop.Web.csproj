@@ -2,39 +2,35 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Shop.Web-48DAAB66-B318-4EDC-9D8E-10F24598FEBF</UserSecretsId>
   </PropertyGroup>
-
 
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'AspNetCoreMentoring' ">
     <StartAction>Project</StartAction>
-    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+    <ExternalConsole>true</ExternalConsole>
+    <ApplicationURL>https://localhost:5004;http://localhost:5006</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Views\Categories\" />
-    <Folder Include="Views\Products\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Middlewares\" />
-    <Folder Include="wwwroot\images\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Components\" />
-    <Folder Include="Views\Shared\Components\" />
-    <Folder Include="Views\Shared\Components\Breadcrumb\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
-    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+    <PackageReference Include="MailKit" Version="2.6.0" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Shop.Core\Shop.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Components\Breadcrumb.json" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,9 @@ using Shop.Core.Services;
 using Shop.Web.Helpers;
 using Shop.Web.Middlewares;
 using Shop.Web.Models;
+using Shop.Web.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Shop.Web.Services;
 
 namespace Shop.Web
 {
@@ -19,7 +23,7 @@ namespace Shop.Web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;          
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -28,16 +32,30 @@ namespace Shop.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<Settings>(Configuration);
-            services.AddDbContext<ApplicationContext>(options
-                => options.UseMySql(this.Configuration.GetConnectionString("Database")));
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddDbContext<IdentityAppDbContext>(options =>
+               options.UseMySql(this.Configuration.GetConnectionString("IdentityDatabase")));
+
+            services.AddDefaultIdentity<IdentityUser>(
+                options => {
+                    options.SignIn.RequireConfirmedAccount = true;
+                })
+                .AddEntityFrameworkStores<IdentityAppDbContext>();
+
+            services.AddDbContext<ApplicationContext>(options =>
+                options.UseMySql(this.Configuration.GetConnectionString("Database")));
+
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<IFormDataHelper, FormDataHelper>();
 
             services.AddAutoMapper(typeof(ViewMappingProfile));
-            services.AddControllersWithViews();
 
+            services.AddControllersWithViews();
+           services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,10 +64,10 @@ namespace Shop.Web
             Log.Information($"Connection string: {Configuration.GetConnectionString("Database")}");
             Log.Information($"Max count products: {Configuration["MaxCountProducts"]}");
 
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -64,7 +82,7 @@ namespace Shop.Web
 
             app.UseMiddleware<ImageCacheMiddleware>(new ImageCacheOptions(env.WebRootPath + "/images", 5));
 
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -72,6 +90,7 @@ namespace Shop.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
