@@ -6,6 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Serilog;
 
 using Shop.Core.Data;
@@ -14,7 +19,6 @@ using Shop.Web.Helpers;
 using Shop.Web.Middlewares;
 using Shop.Web.Models;
 using Shop.Web.Data;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Shop.Web.Services;
 
 namespace Shop.Web
@@ -43,6 +47,18 @@ namespace Shop.Web
                     options.SignIn.RequireConfirmedAccount = true;
                 })
                 .AddEntityFrameworkStores<IdentityAppDbContext>();
+
+             services.AddAuthentication()
+                .AddAzureAD(options => {
+                    Configuration.Bind("AzureAd", options);
+                    options.CookieSchemeName = IdentityConstants.ExternalScheme;
+            } );
+
+            services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+            {
+                options.Authority = options.Authority + "/v2.0/";
+                options.TokenValidationParameters.ValidateIssuer = false;
+            });
 
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseMySql(this.Configuration.GetConnectionString("Database")));
