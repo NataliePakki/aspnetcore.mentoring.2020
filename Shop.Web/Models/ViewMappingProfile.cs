@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Shop.Core.Models;
 using Shop.Web.ViewModels;
 
@@ -26,7 +27,10 @@ namespace Shop.Web.Models
             CreateMap<Category, EditCategoryViewModel>()
                  .ForMember(prv => prv.FileContent, opt => opt.MapFrom(pr => pr.Picture))
                  .ReverseMap();
-            ;
+            CreateMap<IdentityUser, UserViewModel>()
+                 .ForMember(prv => prv.Name, opt => opt.MapFrom(pr => pr.UserName))
+                 .ForMember(prv => prv.Email, opt => opt.MapFrom(pr => pr.Email))
+                 .ReverseMap();
         }
     }
 }

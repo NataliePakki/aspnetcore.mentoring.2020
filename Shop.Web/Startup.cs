@@ -46,6 +46,8 @@ namespace Shop.Web
                 options => {
                     options.SignIn.RequireConfirmedAccount = true;
                 })
+                .AddRoles<IdentityRole>()
+                .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddEntityFrameworkStores<IdentityAppDbContext>();
 
              services.AddAuthentication()
